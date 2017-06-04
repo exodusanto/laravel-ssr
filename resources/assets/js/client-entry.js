@@ -1,3 +1,5 @@
-import { app } from './app';
+import { app, store } from './app'
 
-app.$mount('#root');
+store.replaceState(window.__INITIAL_STATE__)
+
+app.$mount('#root')

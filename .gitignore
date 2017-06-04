@@ -21,3 +21,4 @@ Homestead.json
 /public/js/
 /public/build/
 /public/vendor/
+/render_server/main.build.js

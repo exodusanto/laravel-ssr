@@ -11,21 +11,22 @@ trait ServerSideRenderHelper
     {
     }
 
-    public function renderRequest($path, $data){
+    public function renderRequest($path = "/", $data = []){
 
         if(env('APP_RENDER', false)){
             $template = view('server.app')->render();
 
             $renderClient = new Client();
 
-            $url = 'http://127.0.0.1:8080';
+            $url = env('APP_RENDER');
 
             if($path !== '/') $url .= '/'.$path;
 
             try{
                 $response = $renderClient->get($url, [
                     'query' => [
-                        'template' => json_encode($template)
+                        'renderLaravelTemplate' => json_encode($template),
+                        'renderLaravelData' => json_encode($data)
                     ]
                 ]);
 

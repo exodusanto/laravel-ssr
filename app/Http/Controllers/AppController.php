@@ -17,6 +17,8 @@ class AppController extends Controller
 
     public function getApp(Request $request){
 
-        return $this->renderRequest($request->path(), []);
+        return $this->renderRequest($request->path(), [
+            'list' => ['Render', 'From', 'Server']
+        ]);
     }
 }
