@@ -379,8 +379,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router___default.a);
 
-const Home = __webpack_require__(14);
-const About = __webpack_require__(13);
+const Home =  false ? resolve => require(['../views/Home.vue'], resolve) : __webpack_require__(14);
+
+const About =  false ? resolve => require(['../views/About.vue'], resolve) : __webpack_require__(13);
 
 const router = new __WEBPACK_IMPORTED_MODULE_1_vue_router___default.a({
     mode: 'history',
@@ -455,6 +456,9 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
+Component.options.__file = "/Users/antonio/Sites/laravel-ssr/resources/assets/js/App.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
 
 module.exports = Component.exports
 
@@ -477,6 +481,9 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
+Component.options.__file = "/Users/antonio/Sites/laravel-ssr/resources/assets/js/views/About.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] About.vue: functional components are not supported with templates, they should use render functions.")}
 
 module.exports = Component.exports
 
@@ -495,6 +502,9 @@ var Component = __webpack_require__(0)(
   /* cssModules */
   null
 )
+Component.options.__file = "/Users/antonio/Sites/laravel-ssr/resources/assets/js/views/Home.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Home.vue: functional components are not supported with templates, they should use render functions.")}
 
 module.exports = Component.exports
 
@@ -510,13 +520,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('h4', [_vm._v("Root Component")]), _vm._v(" "), _c('router-view')], 1)
 },staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 /* 16 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h4', [_vm._v("Homepage")]), _vm._v(" "), (_vm.nameNow) ? _c('h5', [_vm._v("Hello " + _vm._s(_vm.name))]) : _vm._e(), _vm._v(" "), _c('button', {
+  return _c('div', [_c('h4', [_vm._v("Homepage")]), _vm._v(" "), (_vm.nameNow) ? _c('h5', [_vm._v("Hello " + _vm._s(_vm.nameNow))]) : _vm._e(), _vm._v(" "), _c('button', {
     on: {
       "click": _vm.updateName
     }
@@ -526,6 +537,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Go to About")])], 1)
 },staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 /* 17 */
@@ -542,6 +554,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Go to Home")])], 1)
 },staticRenderFns: []}
+module.exports.render._withStripped = true
 
 /***/ }),
 /* 18 */
@@ -554,7 +567,7 @@ var content = __webpack_require__(10);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(2)("1915812c", content, true);
+__webpack_require__(2)("1915812c", content, false);
 
 /***/ }),
 /* 19 */
@@ -567,7 +580,7 @@ var content = __webpack_require__(11);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(2)("7c218649", content, true);
+__webpack_require__(2)("7c218649", content, false);
 
 /***/ }),
 /* 20 */

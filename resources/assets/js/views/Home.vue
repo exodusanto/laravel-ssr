@@ -1,7 +1,7 @@
 <template>
     <div>
         <h4>Homepage</h4>
-        <h5 v-if="nameNow">Hello {{ name}}</h5>
+        <h5 v-if="nameNow">Hello {{ nameNow }}</h5>
         <button @click="updateName">Change Name</button>
         <router-link to="/about">Go to About</router-link>
     </div>

@@ -3,8 +3,13 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const Home = require('../views/Home.vue');
-const About = require('../views/About.vue');
+const Home = process.env.NODE_ENV !== 'server' 
+    ? resolve => require(['../views/Home.vue'], resolve) 
+    : require('../views/Home.vue');
+
+const About = process.env.NODE_ENV !== 'server' 
+    ? resolve => require(['../views/About.vue'], resolve) 
+    : require('../views/About.vue');
 
 const router = new Router({
     mode: 'history',
