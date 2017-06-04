@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run development",
+    "run:server": "node render_server/server ",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch-poll": "npm run watch -- --watch-poll",
@@ -16,12 +17,14 @@
     "cross-env": "^3.2.3",
     "jquery": "^3.1.1",
     "laravel-mix": "0.*",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "vue-ssr-webpack-plugin": "^3.0.0"
   },
   "dependencies": {
     "express": "^4.15.3",
     "serialize-javascript": "^1.3.0",
     "vue": "^2.3.3",
+    "vue-router": "^2.5.3",
     "vue-server-renderer": "^2.3.3",
     "vue-ssr": "^0.2.5"
   }

@@ -15,10 +15,10 @@ const indexRenderer = new VueSSR({
     webpackServer: serverConfig
 })
 
-function index (req, res) {
+function main (req, res) {
     indexRenderer.render(req, res, JSON.parse(req.query.template))
 }
 
 module.exports = {
-    index
+    main
 }

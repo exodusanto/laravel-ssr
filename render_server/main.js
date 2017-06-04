@@ -410,16 +410,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = (context => {
-  // set router's location
-  __WEBPACK_IMPORTED_MODULE_0__app__["a" /* router */].push(context.url);
+  // since there could potentially be asynchronous route hooks or components,
+  // we will be returning a Promise so that the server can wait until
+  // everything is ready before rendering.
+  return new Promise((resolve, reject) => {
+    // set server-side router's location
+    __WEBPACK_IMPORTED_MODULE_0__app__["a" /* router */].push(context.url
 
-  return Promise.all(__WEBPACK_IMPORTED_MODULE_0__app__["a" /* router */].getMatchedComponents().map(component => {
-    // if (component.preFetch) {
-    //   return component.preFetch(store)
-    // }
-  })).then(() => {
-    // context.initialState = store.state
-    return __WEBPACK_IMPORTED_MODULE_0__app__["b" /* app */];
+    // wait until router has resolved possible async components and hooks
+    );__WEBPACK_IMPORTED_MODULE_0__app__["a" /* router */].onReady(() => {
+      const matchedComponents = __WEBPACK_IMPORTED_MODULE_0__app__["a" /* router */].getMatchedComponents
+      // no matched routes, reject with 404
+      ();if (!matchedComponents.length) {
+        reject({ code: 404 });
+      }
+
+      // the Promise should resolve to the app instance so it can be rendered
+      resolve(__WEBPACK_IMPORTED_MODULE_0__app__["b" /* app */]);
+    }, reject);
   });
 });
 

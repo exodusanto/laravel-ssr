@@ -18,17 +18,19 @@ class AppController extends Controller
 
         $renderClient = new Client();
 
-        $response = $renderClient->get('http://127.0.0.1:8080', [
-            'query' => [
-                'template' => json_encode($template)
-            ]
-        ]);
+        try{
+            $response = $renderClient->get('http://127.0.0.1:8080', [
+                'query' => [
+                    'template' => json_encode($template)
+                ]
+            ]);
 
-        if($response->getStatusCode() === 200){
-            return $response->getBody();
-        }else{
-            return view('app');
-        }
+            if($response->getStatusCode() === 200){
+                return $response->getBody();
+            }
+        }catch(\Exception $e){}
+        
+        return view('app');
 
         // $ch = curl_init();
         // // curl_setopt($ch, CURLOPT_VERBOSE, true);

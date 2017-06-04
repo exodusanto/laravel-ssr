@@ -1,9 +1,8 @@
 <template>
-        <div id="root">
-            <h1>Titolo</h1>
-            <h4 class="sub">Nome utente {{ name }}</h4>
-            <input v-model="name">
-        </div>
+    <div id="root">
+        <h4>Root Component</h4>
+        <router-view></router-view>
+    </div>
 </template>
 <script>
     export default {

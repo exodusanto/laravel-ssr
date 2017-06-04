@@ -3,6 +3,6 @@ const router = express.Router()
 
 const View = require('./view')
 
-router.get('*', View.index)
+router.get('*', View.main)
 
 module.exports = router
