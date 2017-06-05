@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Log;
 
 trait ServerSideRenderHelper
 {
@@ -12,7 +13,6 @@ trait ServerSideRenderHelper
     }
 
     public function renderRequest($path = "/", $data = []){
-
         if(env('APP_RENDER', false)){
             $template = view('server.app')->render();
 
@@ -33,7 +33,9 @@ trait ServerSideRenderHelper
                 if($response->getStatusCode() === 200){
                     return $response->getBody();
                 }
-            }catch(\Exception $e){}
+            }catch(\Exception $e){
+                Log::error($e);
+            }
         }
         
         return view('app');

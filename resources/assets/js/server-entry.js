@@ -1,15 +1,20 @@
-import { app, router, store } from './app'
+import createApp from './app'
 
 export default context => {
+  const { app, router, store } = createApp(context);
+  
   // set router's location
   router.push(context.url)
 
+
+  const initialState = Object.assign({}, store.state, context);
+
   return Promise.all(router.getMatchedComponents().map(component => {
     if (component.preFetch) {
-      return component.preFetch(store)
+      return component.preFetch(initialState)
     }
   })).then(() => {
-    context.initialState = store.state
+    context.initialState = initialState;
     return app
   })
 }

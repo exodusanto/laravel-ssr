@@ -1,4 +1,6 @@
-import { app, store } from './app'
+import createApp from './app'
+
+const { app, store } = createApp()
 
 store.replaceState(window.__INITIAL_STATE__)
 

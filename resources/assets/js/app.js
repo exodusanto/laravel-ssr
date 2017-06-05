@@ -6,10 +6,18 @@ import { sync } from 'vuex-router-sync'
 
 sync(store, router)
 
-const app = new Vue({
-    router,
-    store,
-    render: h => h(App)
-})
 
-export { app, router, store }
+export default function createApp (context) {
+
+    if(context){
+        store.replaceState(Object.assign({}, store.state, context));
+    }
+
+    const app = new Vue({
+        router,
+        store,
+        render: h => h(App)
+    })
+
+    return { app, router, store }
+}
