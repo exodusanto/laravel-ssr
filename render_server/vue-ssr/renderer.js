@@ -108,9 +108,13 @@ class VueSSR {
             if (firstChunk) {
                 res.write(this.headDataInject(context, this.HTML.head))
                 if (context.initialState) {
+                    let contextClean = Object.assign({}, context.initialState);
+                    delete contextClean['_registeredComponents'];
+                    delete contextClean['_styles'];
+
                     res.write(
                         `<script>window.__INITIAL_STATE__=${
-                            serialize(context.initialState, { isJSON: true })
+                            serialize(contextClean, { isJSON: true })
                         }</script>`
                     )
                 }
