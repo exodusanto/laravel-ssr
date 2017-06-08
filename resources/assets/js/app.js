@@ -4,14 +4,13 @@ import store from './store'
 import App from './App.vue'
 import { sync } from 'vuex-router-sync'
 
-sync(store, router)
-
-
 export default function createApp (context) {
 
     if(context){
         store.replaceState(Object.assign({}, store.state, context));
     }
+    
+    sync(store, router)
 
     const app = new Vue({
         router,

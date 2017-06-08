@@ -26,7 +26,8 @@ trait ServerSideRenderHelper
                 $response = $renderClient->get($url, [
                     'query' => [
                         'renderLaravelTemplate' => json_encode($template),
-                        'renderLaravelData' => json_encode($data)
+                        'renderLaravelData' => json_encode($data),
+                        'path' => $path
                     ]
                 ]);
 

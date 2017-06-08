@@ -16,8 +16,9 @@ class AppController extends Controller
     }
 
     public function getApp(Request $request){
-
-        return $this->renderRequest($request->path(), [
+        $url = str_replace(url('/'), '', $request->fullUrl());
+        if($url === "") $url = '/';
+        return $this->renderRequest($url, [
             'list' => ['Render', 'From', 'Server']
         ]);
     }

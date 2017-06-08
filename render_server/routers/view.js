@@ -15,8 +15,7 @@ const indexRenderer = new VueRender({
     }, 
     webpackServer: serverConfig,
     contextHandler: function (req) {
-        let url = req.url.replace(/(\?renderLaravelTemplate.+&renderLaravelData.+)/, "");
-        let context = { url: url };
+        let context = { url: req.query.path };
         context = Object.assign({}, context, JSON.parse(req.query.renderLaravelData));
         return context
     }

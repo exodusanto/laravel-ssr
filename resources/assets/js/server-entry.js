@@ -6,7 +6,6 @@ export default context => {
   // set router's location
   router.push(context.url)
 
-
   const initialState = Object.assign({}, store.state, context);
 
   return Promise.all(router.getMatchedComponents().map(component => {
